@@ -1,26 +1,47 @@
 import React, { useState } from 'react';
+import ModalWindow from "./ModalWindow";
 import styles from "./UserForm.module.css";
 
 const UserForm = (props) => {
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
     const [sex, setSex] = useState('');
+    const [isValid, setIsValid] = useState(true);
+    const [message, setMessage] = useState('');
+
+    const checkIsValid = val => {
+        if(val.trim().length > 0) {
+            setIsValid(true);
+        }
+    };
 
     const nameChangeHandler = (event) => {
+        checkIsValid(event.target.value);
         setName(event.target.value);
     };
 
     const ageChangeHandler = (event) => {
+        checkIsValid(event.target.value);
         setAge(event.target.value);
     };
 
     const sexChangeHandler = (event) => {
-        console.log(event.target.value + typeof(event.target.value));
+        checkIsValid(event.target.value);
         setSex(event.target.value);
     };
 
     const submitHandler = (event) => {
         event.preventDefault();
+
+        if(age < 0) {
+            setIsValid(false);
+            setMessage('Please enter a valid age (> 0).');
+            return;
+        } else if(name.trim().length === 0 | age.trim().length === 0 | sex.trim().length === 0) {
+            setIsValid(false);
+            setMessage('Please enter a valid name and age (non-empty values).');
+            return;
+        }
 
         const usersData = {
             id: Math.random().toString(),
@@ -37,21 +58,26 @@ const UserForm = (props) => {
         setSex('');
     }
 
+    const invalidInputHandler = () => {
+        setIsValid(true);
+        setMessage('');
+    };
+
     return (
         <div className={styles['form-container']}>
+            {!isValid && <ModalWindow invalidInput={invalidInputHandler} message={message}/>}
             <form onSubmit={submitHandler}>
                 <div className={styles['form-control']}>
                     <label>Username</label>
-                    <input type="text" onChange={nameChangeHandler}/>
+                    <input value={name} type="text" onChange={nameChangeHandler}/>
                 </div>
                 <div className={styles['form-control']}>
                     <label>Age (Years)</label>
-                    <input type="number" onChange={ageChangeHandler}/>
+                    <input value={age} type="number" onChange={ageChangeHandler}/>
                 </div>
                 <div className={styles['form-control']}>
                     <label>Sex</label>
                     <select className={styles.sex} onChange={sexChangeHandler}>
-                        <option value="nonValid" hidden>Choose an option</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>

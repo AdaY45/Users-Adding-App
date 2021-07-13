@@ -13,7 +13,7 @@ function App() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${users.length > 3 && styles.shrink}`}>
       <UserForm onSaveUsersData={saveUserHandler} />
       {users.length > 0 && <Users users={users} />}
     </div>
