@@ -1,0 +1,16 @@
+.user-item {
+    width: 8%;
+}
+
+.user {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 30px;
+    margin: 20px 0;
+}
+
+.heading {
+    font-weight: 500;
+    margin: auto 50px;
+}

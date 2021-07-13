@@ -1,0 +1,7 @@
+.container {
+  background-image: url("./images/img-1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  padding: 50px 400px;
+}

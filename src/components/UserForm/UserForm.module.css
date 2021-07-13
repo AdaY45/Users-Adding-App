@@ -1,0 +1,48 @@
+.form-container {
+    background-color: white;
+    padding: 30px;
+    font-family: 'Encode Sans SC', sans-serif;
+}
+
+label {
+    font-weight: 500;
+    color: #032743;
+}
+
+input {
+    width: stretch;
+    height: 20px;
+    margin: 10px 0;
+    padding: 5px;
+    border: 1.5px solid #032743;
+}
+
+.button {
+    border: none;
+    cursor: pointer;
+    background-color: #EEBD08;
+    color: #032743;
+    padding: 10px 100px;
+    display: block;
+    margin: 20px auto 0;
+    font-family: 'Encode Sans SC', sans-serif;
+    font-weight: 600;
+}
+
+.button:hover {
+    background-color: #032743;
+    color: #FFEDFF;
+    transition: background .5s ease;
+}
+
+.sex {
+    width: 100%;
+    padding: 5px;
+    margin: 10px 0;
+    font-family: 'Encode Sans SC', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    color: #032743;
+    height: 38px;
+    border: 1.5px solid #032743; 
+}
