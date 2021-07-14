@@ -32,8 +32,9 @@ const UserForm = (props) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
+        console.log(name + " ," + age + " ," + sex);
 
-        if(age < 0) {
+        if(+age < 0) {
             setIsValid(false);
             setMessage('Please enter a valid age (> 0).');
             return;
@@ -68,16 +69,17 @@ const UserForm = (props) => {
             {!isValid && <ModalWindow invalidInput={invalidInputHandler} message={message}/>}
             <form onSubmit={submitHandler}>
                 <div className={styles['form-control']}>
-                    <label>Username</label>
-                    <input value={name} type="text" onChange={nameChangeHandler}/>
+                    <label htmlFor="username">Username</label>
+                    <input id="username" value={name} type="text" onChange={nameChangeHandler}/>
                 </div>
                 <div className={styles['form-control']}>
-                    <label>Age (Years)</label>
-                    <input value={age} type="number" onChange={ageChangeHandler}/>
+                    <label htmlFor="age">Age (Years)</label>
+                    <input id="age" value={age} type="number" onChange={ageChangeHandler}/>
                 </div>
                 <div className={styles['form-control']}>
-                    <label>Sex</label>
-                    <select className={styles.sex} onChange={sexChangeHandler}>
+                    <label htmlFor="sex">Sex</label>
+                    <select id="sex" className={styles.sex} onChange={sexChangeHandler}>
+                        <option value="Male" selected disabled hidden>Choose an option</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>

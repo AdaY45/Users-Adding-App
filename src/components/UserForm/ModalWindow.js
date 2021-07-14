@@ -4,7 +4,7 @@ import "./ModalWindow.module.css"
 const ModalWindow = props => {
 
     return (
-        <div className={styles.modal}>
+        <div onClick={props.invalidInput} className={styles.modal}>
             <div className={styles.window}>
                 <h2 className={styles.heading}>Invalid input</h2>
                 <p className={styles.message}>{props.message}</p>
