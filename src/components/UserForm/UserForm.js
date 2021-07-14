@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ModalWindow from "./ModalWindow";
+import ModalWindow from "../ModalWindow/ModalWindow";
 import styles from "./UserForm.module.css";
 
 const UserForm = (props) => {
